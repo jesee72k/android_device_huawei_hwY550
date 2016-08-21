@@ -25,55 +25,52 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include <cstdlib>
+#include <fstream>
+#include <string>
 
 #include "vendor_init.h"
 #include "property_service.h"
 #include "log.h"
 #include "util.h"
 
-#include "init_msm.h"
+#define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
-void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type)
+void vendor_load_properties()
 {
     char platform[PROP_VALUE_MAX];
-    char model[110];
-    FILE* fp;
+    std::ifstream fin;
+    std::string buf;
     int rc;
-
-    UNUSED(msm_id);
-    UNUSED(msm_ver);
-    UNUSED(board_type);
 
     rc = property_get("ro.board.platform", platform);
     if (!rc || !ISMATCH(platform, ANDROID_TARGET))
         return;
 
-    fp = fopen("/proc/app_info", "rb");
-    while (fgets(model, 100, fp))
-        if (strstr(model, "huawei_fac_product_name") != NULL)
+    fin.open("/proc/app_info");
+    while (getline(fin, buf))
+        if (buf.find("huawei_fac_product_name") != std::string::npos)
             break;
+    fin.close();
 
-    /* Y550-L01 */
-   if (strstr(model, "Y550-L01") != NULL) {
+    /* hwY550-L01 */
+    if (buf.find("hwY550-L01") != std::string::npos) {
         property_set("ro.product.model", "Y550-L01");
         property_set("ro.product.name", "Y550-L01");
         property_set("ro.product.device", "Y550-L01");
         property_set("ro.build.product", "Y550-L01");
         property_set("ro.telephony.default_network", "9");
     }
-   /* Y550-L02 */
-    else if (strstr(model, "Y550-L02") != NULL) {
+    /* hwY550-L02 */
+    else if (buf.find("hwY550-L02") != std::string::npos) {
         property_set("ro.product.model", "Y550-L02");
         property_set("ro.product.name", "Y550-L02");
         property_set("ro.product.device", "Y550-L02");
         property_set("ro.build.product", "Y550-L02");
         property_set("ro.telephony.default_network", "9");
     }
-   /* Y550-L03 */
-    else if (strstr(model, "Y550-L03") != NULL) {
+    /* hwY550-L03 */
+    else if (buf.find("hwY550-L03") != std::string::npos) {
         property_set("ro.product.model", "Y550-L03");
         property_set("ro.product.name", "Y550-L03");
         property_set("ro.product.device", "Y550-L03");
