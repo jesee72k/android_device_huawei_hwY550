@@ -22,10 +22,10 @@ TARGET_SCREEN_HEIGHT := 854
 TARGET_SCREEN_WIDTH := 480
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/pac/config/common_full_phone.mk)
 
 PRODUCT_GMS_CLIENTID_BASE := android-hwY550
 
-PRODUCT_NAME := cm_hwY550
+PRODUCT_NAME := pac_hwY550
 PRODUCT_DEVICE := hwY550
 
