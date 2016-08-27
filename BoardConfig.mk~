@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -107,9 +107,6 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 1795144704
 BOARD_CACHEIMAGE_PARTITION_SIZE := 201326592
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
 
-# tap2wak
-TARGET_TAP_TO_WAKE_NODE := /sys/touch_screen/easy_wakeup_gesture
-
 # Power
 TARGET_POWERHAL_VARIANT := qcom
 
@@ -117,6 +114,7 @@ TARGET_POWERHAL_VARIANT := qcom
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
+BOARD_NO_SECURE_DISCARD := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
 
 # RIL
@@ -189,9 +187,6 @@ ifeq ($(HOST_OS),linux)
     endif
   endif
 endif
-
-#Use dlmalloc instead of jemalloc for mallocs
-MALLOC_IMPL := dlmalloc
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true

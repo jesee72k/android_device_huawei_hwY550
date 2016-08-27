@@ -204,11 +204,11 @@ PRODUCT_PACKAGES += \
     wcnss_service
 
 # ANT+ stack
-PRODUCT_PACKAGES += \
-    AntHalService \
-    libantradio \
-    antradio_app \
-    com.dsi.ant.antradio_library
+#PRODUCT_PACKAGES += \
+ #   AntHalService \
+  #  libantradio \
+   # antradio_app \
+    #com.dsi.ant.antradio_library
 
 # FM
 PRODUCT_PACKAGES += \

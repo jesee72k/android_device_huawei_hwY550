@@ -18,8 +18,8 @@
 $(call inherit-product, device/huawei/hwY550/full_hwY550.mk)
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 854
-TARGET_SCREEN_WIDTH := 480
+#TARGET_SCREEN_HEIGHT := 854
+#TARGET_SCREEN_WIDTH := 480
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/aosp/common.mk)

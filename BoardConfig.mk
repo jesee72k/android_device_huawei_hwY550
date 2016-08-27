@@ -114,6 +114,7 @@ TARGET_POWERHAL_VARIANT := qcom
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
+BOARD_NO_SECURE_DISCARD := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.qcom
 
 # RIL
@@ -165,10 +166,10 @@ MAX_VIRTUAL_DISPLAY_DIMENSION := 2048
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
+#include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
-    $(LOCAL_PATH)/sepolicy
+#BOARD_SEPOLICY_DIRS += \
+#    $(LOCAL_PATH)/sepolicy
 
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
@@ -186,9 +187,6 @@ ifeq ($(HOST_OS),linux)
     endif
   endif
 endif
-
-#Use dlmalloc instead of jemalloc for mallocs
-MALLOC_IMPL := dlmalloc
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
