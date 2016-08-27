@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The Android Open Source Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +16,14 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter hwY550, $(TARGET_DEVICE)),)
+#----------------------------------------------------------------------
+# extra images
+#----------------------------------------------------------------------
+include build/core/generate_extra_images.mk
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
 
-endif
+# Create a link for the WCNSS config file, which ends up as a writable
+# version in /data/misc/wifi
+$(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/prima; \
+    ln -sf /data/misc/wifi/WCNSS_qcom_cfg.ini \
+	    $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini)

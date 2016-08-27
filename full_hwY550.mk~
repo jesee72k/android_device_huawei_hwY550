@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The Android Open Source Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,10 +14,18 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := $(call my-dir)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-ifneq ($(filter hwY550, $(TARGET_DEVICE)),)
+# Include all languages
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
+# Inherit from hwY550 device
+$(call inherit-product, device/huawei/hwY550/device.mk)
 
-endif
+# Device identifier. This must come after all inclusions
+PRODUCT_NAME := full_hwY550
+PRODUCT_DEVICE := hwY550
+PRODUCT_BRAND := Huawei
+PRODUCT_MANUFACTURER := HUAWEI
+PRODUCT_MODEL := Huawei Y550 LTE

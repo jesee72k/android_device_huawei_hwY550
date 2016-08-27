@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The Android Open Source Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -106,6 +106,9 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1342177280
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1795144704
 BOARD_CACHEIMAGE_PARTITION_SIZE := 201326592
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
+
+# tap2wak
+TARGET_TAP_TO_WAKE_NODE := /sys/touch_screen/easy_wakeup_gesture
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom

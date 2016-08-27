@@ -14,5 +14,18 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/aosp_hwY550.mk
+# Inherit full device.
+$(call inherit-product, device/huawei/hwY550/full_hwY550.mk)
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 854
+TARGET_SCREEN_WIDTH := 480
+
+# Inherit some common CM stuff.
+$(call inherit-product, vendor/aosp/common.mk)
+
+PRODUCT_GMS_CLIENTID_BASE := android-hwY550
+
+PRODUCT_NAME := aosp_hwY550
+PRODUCT_DEVICE := hwY550
+
